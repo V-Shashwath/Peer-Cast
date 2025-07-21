@@ -1,0 +1,20 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy and install
+COPY ui/package*.json ./
+RUN npm install
+
+# Copy source
+COPY ui/ .
+
+# Build the app
+RUN npm run build
+
+# Expose Vite preview port
+EXPOSE 4173
+
+# Serve production build
+CMD ["npm", "run", "preview", "--", "--port", "4173", "--host"]
+
