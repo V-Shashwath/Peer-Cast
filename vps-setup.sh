@@ -118,10 +118,12 @@ CLASSPATH="target/p2p-1.0-SNAPSHOT.jar:$(mvn dependency:build-classpath -Dinclud
 pm2 start --name peercast-backend java -- -cp "$CLASSPATH" p2p.App
 
 # Start frontend with PM2
-echo "Starting frontend with PM2..."
-cd ui
-pm2 start npm --name peercast-frontend -- start
-cd ..
+#echo "Starting frontend with PM2..."
+#cd ui
+#pm2 start npm --name peercast-frontend -- start
+#cd ..
+echo "Frontend build complete. No need to run it with PM2 since Nginx will serve it from /ui/dist."
+
 
 # Save PM2 configuration
 pm2 save
@@ -136,4 +138,4 @@ echo "PeerCast is now running on your VPS!"
 echo "Backend API: http://localhost:8080 (Internal - accessed via Nginx)"
 echo "Frontend: http://65.1.17.246 (Access via your instance's IP address)"
 echo "You can access your application using your Lightsail instance's public IP address in your browser."
-# echo "Visit https://your-actual-domain.com to access your application."
+# echo "Visit https://your-actual-domain.com to accstaress your application."
