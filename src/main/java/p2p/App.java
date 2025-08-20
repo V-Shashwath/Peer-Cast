@@ -11,9 +11,9 @@ public class App {
     public static void main(String[] args) {
 
         try {
-            FileController fileController = new FileController(8080);
+            FileController fileController = new FileController(8081);
             fileController.start();
-            System.out.println("PeerCast server started on port 8080");
+            System.out.println("PeerCast server started on port 8081");
             System.out.println("UI available at http://localhost:3000");
             Runtime.getRuntime().addShutdownHook(
                     new Thread(
@@ -27,7 +27,7 @@ public class App {
             System.in.read();
 
         } catch (Exception ex) {
-            System.err.println("Failed to start the server at port: 8080 ");
+            System.err.println("Failed to start the server at port: 8081 ");
             ex.printStackTrace();
         }
 

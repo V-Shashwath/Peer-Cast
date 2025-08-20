@@ -69,7 +69,7 @@ server {
 
     # Backend API
     location /api/ {
-        proxy_pass http://localhost:8080/;
+        proxy_pass http://localhost:8081/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade \$http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -135,7 +135,7 @@ pm2 startup
 
 echo "=== Setup Complete ==="
 echo "PeerCast is now running on your VPS!"
-echo "Backend API: http://localhost:8080 (Internal - accessed via Nginx)"
+echo "Backend API: http://localhost:8081 (Internal - accessed via Nginx)"
 echo "Frontend: http://65.1.17.246 (Access via your instance's IP address)"
 echo "You can access your application using your Lightsail instance's public IP address in your browser."
 # echo "Visit https://your-actual-domain.com to accstaress your application."
