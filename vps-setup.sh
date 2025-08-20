@@ -81,16 +81,10 @@ server {
     }
 
     # Frontend
-    location / {
-        proxy_pass http://localhost:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade \$http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host \$host;
-        proxy_set_header X-Real-IP \$remote_addr;
-        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto \$scheme;
-        proxy_cache_bypass \$http_upgrade;
+     location / {
+            root /home/ubuntu/Peer-Cast/ui/dist;
+            index index.html index.htm;
+            try_files \$uri \$uri/ /index.html;
     }
 
     # Additional security headers (still good to have)
@@ -140,6 +134,6 @@ pm2 startup
 echo "=== Setup Complete ==="
 echo "PeerCast is now running on your VPS!"
 echo "Backend API: http://localhost:8080 (Internal - accessed via Nginx)"
-echo "Frontend: http://your_lightsail_public_ip (Access via your instance's IP address)"
+echo "Frontend: http://65.1.17.246 (Access via your instance's IP address)"
 echo "You can access your application using your Lightsail instance's public IP address in your browser."
 # echo "Visit https://your-actual-domain.com to access your application."
